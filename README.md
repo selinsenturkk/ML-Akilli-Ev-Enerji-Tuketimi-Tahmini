@@ -105,4 +105,4 @@ burasaki amaç, enerji tüketiminin zamansal ve çevresel koşullarla olan iliş
 
 ## sertifikalarım
 
-| ![sertifika1](/images/sertifika1.png) | ![sertifka2](/images/sertifika2.png)
+| ![sertifika1](/images/setifika1.png) | ![sertifka2](/images/setifika2.png) |
