@@ -27,7 +27,7 @@ saatlere göre ortalama ev tüketimi hesaplanmıştır.
 bu işlem için pivot tablo kullandım:
 
 - satırlar: Saatler (0–23)
-- değerler: `use [kW]`
+- değerler: use [kW]
 - İşlem: Otalama (mean)
 
 Bu pivot tablo sayesinde her saat için "Bu saatte evin normalde ne kadar elektrik tükettiği bilgisini" elde ettim.
