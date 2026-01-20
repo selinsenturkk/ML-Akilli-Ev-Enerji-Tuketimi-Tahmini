@@ -7,7 +7,7 @@ Bu sebepten pivot tablo kullanımı özellikle tercih edilmiştir.
 
 ## kullanılan veri seti
 
-veri seti yaklaşık 40.000 satır ve 32 sütundan oluşmaktadır.
+Kullandığımız veri seti Smart Home Dataset.csv dosyasıdır. veri seti yaklaşık 40.000 satır ve 32 sütundan oluşmaktadır.
 Bu veri seti; zaman bilgisi, ev içi toplam enerji tüketimi, hava durumu verileri (sıcaklık, nem, basınç vb.), hava durumu özet bilgileri (summary, icon) gibi 
 bilgiler içermektedir.
 
@@ -17,7 +17,7 @@ bilgiler içermektedir.
 Veriye şu işlemleri uyguladım:
 1.eksik verileri veri setinden çıkardım.
 2.unix formatındaki time sütununu, tarih-saat formatına çevrdim.
-3.saat ve ay bilgileri ayrı sütunlar olarak elde ettim.
+3.tarih bilgisinden saat ve ay bilgilerini ayrı sütunlar olarak elde ettim.
 4.Kategorik verileri (summary, icon) label encod,ng yöntemi ile sayısal hale getirttim.
 
 
@@ -50,26 +50,27 @@ Modelde aşağıdaki özellikler kullanılmıştır:
 Tahmin edilmeye çalışılan hedef değişken: use [kW] (Toplam ev tüketimi)
 
 
-## Kullanılan Modeller
+## kullanılan modeller
 
 Veriyi %80 eğitim ve %20 test olacak şekilde ayırdım. Daha sonrasında iki farklı regresyon modeli kullandım:
 
 1. Random forest regressor
 2. 2. K-nearest neighbors (KNN)
 
-## Model Sonuçları
+## model sonuçları
 
 ![Sonuclar](/images/img1.png)
 
+Random Forest modeli, KNN modeline göre daha yüksek başarı göstermiştir.
 sonuc: toplam ev tüketimi, birçok cihazın anlık ve kullanıcıya bağlı çalışması nedeniyle tam olarak tahmin edilmesi zor bir değişkendir.
-Bu nedenle elde edilen r^2 değerleri beklenen seviyededir.
+Bu nedenle elde edilen r^2 değerleri beklenen seviyededir. not: Dishwasher, Furnace gibi cihazların tüketimi modele bilerek verilmemiştir. Sadece dış etkenler kullanılarak gerçekçi bir tahmin yapılmıştır.
 
 
 ## Grafikler
 
-### 1. Saatlere göre ortalama ev tüketimi (Baseline)
+### 1. saatlere göre ortalama ev tüketimi (baseline)
 
-Bu grafik, pivot tablo kullanılarak elde edilen saatlik ortalama tüketim değerlerini göstermektedi.
+Bu grafik, pivot tablo kullanılarak elde edilen saatlik ortalama tüketim değerlerini göstermektedi.akşam saatlerinde (18:00 sonrası) tüketimin zirve yaptığı görülmektedir.
 
 ![saatlik ort tuketim](/images/img2.png)
 
@@ -83,13 +84,13 @@ Bu grafik, pivot tablo kullanılarak elde edilen saatlik ortalama tüketim değe
 
 ### 3. özellik önem düzeyleri (feature ımportance)
 
-Random Forest modeli kullanılrak,modelin karar verirken hangi özelliklere daha fazla önem verdiği analiz edilmiştir.
-sonuçlara göre: basınç , sıcaklık, nemi, saatlik baseline bilgisi model üzerinde onemli bir etkiye sahiptir
+Random Forest modeli kullanılrak,modelin karar verirken hangi özelliklere daha fazla önem verdiğini analiz ettim.
+sonuçlara göre: basınç , sıcaklık, nemi, saatlik baseline bilgisi model üzerinde onemli bir etkiye sahiptir . Pivot tablo ile ürettiğimiz hourly_baseline özelliği model için önemli bir referans oldu.
 
 ![featureimp](/images/img4.png)
 
 
-## Genel Değerlendirme
+## genel değerlendirme
 
 Bu projede pivot tablo kullanılarak saat bazlı baseline oluşturulmuştur. sonra bu baseline bilgisi modele eklenerek tahmin süreci desteklenmiştir.
 Uygun modeller tercih edilmiş ve analiz edilmiştir. sonuçlar da grafiklerle yorumlanabilir hale getirilmiştir.
@@ -104,5 +105,4 @@ burasaki amaç, enerji tüketiminin zamansal ve çevresel koşullarla olan iliş
 - scikit-learn
 
 ## sertifikalarım
-
 | ![sertifika1](/images/setifika1.png) | ![sertifka2](/images/setifika2.png) |
